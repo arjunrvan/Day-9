@@ -143,7 +143,59 @@ function audSwap (btnName) {
 
     // Change artist name
     document.getElementById('artist').innerHTML = songsList[songInd].artist;
-
     
+}
+
+var sng = document.getElementById('aud');
+var timeBar = document.getElementById('timeBar');
+
+setInterval(checkTime, 1000) ;
+console.log (sng.duration);
+
+
+function checkTime () {
+    
+    // console.log(sng.currentTime);
+
+    var songDuration = (sng.duration);
+    var timebarWidth = (sng.currentTime/songDuration) * 100;
+
+    timeBar.style.width = timebarWidth + '%';
+
+   
+    document.getElementById('over').innerHTML = Math.round(timebarWidth) + ' %';
+    
+
+    // widthPx = (sng.currentTime/songDuration) * 500;
+
+    // console.log(widthPx);
+
+    // if (widthPx >= 100) {
+    //     document.getElementById('icon1').style.opacity = 1;
+    // } else {
+    //     document.getElementById('icon1').style.opacity = 0;
+    // }
+
+    // if (widthPx >= 200) {
+    //     document.getElementById('icon2').style.opacity = 1;
+    // } else {
+    //     document.getElementById('icon2').style.opacity = 0;
+    // }
+  
+
+    // if (widthPx >= 300) {
+    //     document.getElementById('icon3').style.opacity = 1;
+    // } else {
+    //     document.getElementById('icon3').style.opacity = 0;
+    // }
+  
+
+    // if (widthPx >= 400) {
+    //     document.getElementById('icon4').style.opacity = 1;
+    // } else {
+    //     document.getElementById('icon4').style.opacity = 0;
+    // }
+  
+  
 }
 
