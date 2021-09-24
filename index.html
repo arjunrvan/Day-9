@@ -14,20 +14,28 @@
         <div id="container">
             <h1>Music Player</h1>
             <br/>
-            <audio id="aud" src="audio/30sec" controls autoplay muted></audio>
+            <audio id="aud" src="audio/30sec" controls></audio>
 
             <br/><br/>
 
+            <div>
+                <p id="song-title"></p>
+                <br/>
+                <p id="artist"></p>
+            </div>
+
             <div id="first-row">
-                <div id="switch-btn" class="vid-btn" onclick="playAlt()">
+                <div id="switch-btn" class="aud-btn" onclick="playAlt()">
                     <i class="fas fa-play"></i>
-                </div>         
+                </div>      
+                
+                <div id="mute-btn" class="aud-btn" onclick="muteVol()" ><i class="fas fa-volume-mute"></i></div>
 
             </div>
 
             <br/>
             <div class="vol-nav">
-                <div class="vid-btn" onclick="updateVol(-0.1)"><i class="fas fa-volume-down"></i></div>
+                <div class="aud-btn" onclick="updateVol(-0.1)"><i class="fas fa-volume-down"></i></div>
 
                 <div id="vol-bar2">
                     <div id="bar1" style="height: 10%;" class="white-bar"></div>
@@ -42,14 +50,14 @@
                     <div id="bar10" style="height: 100%;"class="white-bar"></div>
                 </div>
 
-                <div class="vid-btn" onclick="updateVol(0.1)"><i class="fas fa-volume-up"></i></div>
+                <div class="aud-btn" onclick="updateVol(0.1)"><i class="fas fa-volume-up"></i></div>
             </div>
             <br/>
 
             <div>
-                <div id="alt-button" onclick="vidSwap(1)"><i class="fas fa-chevron-left"></i> Prev  </div>
+                <div id="alt-button" onclick="audSwap(1)"><i class="fas fa-chevron-left"></i> Prev  </div>
 
-                <div id="alt-button" onclick="vidSwap(2)">  Next <i class="fas fa-chevron-right"></i></div>
+                <div id="alt-button" onclick="audSwap(2)">  Next <i class="fas fa-chevron-right"></i></div>
             </div>
         </div>
 

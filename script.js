@@ -4,42 +4,48 @@ var song1 = {
     src: 'audio/30sec',
     title: 'Happy Birthday',
     artist: 'Justin B',
-    image: 'images/kl.jpg'
+    image: 'url(images/kl.jpg)'
 }
 
 var song2 = {
     src: 'audio/bgmusic.mp3',
     title: 'Louder',
     artist: 'Martin Kelly',
-    image: 'images/ny.jpg'
+    image: 'url(images/ny.jpg)'
 }
 
 var song3 = {
     src: 'audio/bloop.mp3',
     title: 'Rock Anthem',
     artist: 'David Prost',
-    image: 'images/paris.jpg'
+    image: 'url(images/paris.jpg)'
 }
 
 var song4 = {
     src: 'audio/click.mp3',
     title: 'Click Click Click',
     artist: 'George Sunderland',
-    image: 'images/sydney.jpg'
+    image: 'url(images/sydney.jpg)'
 }
 
 var song5 = {
     src: 'audio/littlebit.mp3',
     title: 'Little Bit',
     artist: "Let's Go",
-    image: 'images/london.jpg'
+    image: 'url(images/london.jpg)'
 }
+
+var songsList = [song1,song2,song3,song4,song5];
+
+var songInd = 0;
+var songMax = songsList.length - 1;
 
 
 var audio = document.getElementById('aud');
 var vol = 1;
 
 var isPlay = false;
+var isMute = false;
 
 var vidSelect = 1;
 
@@ -94,29 +100,50 @@ function playAlt () {
     }
 }
 
-function vidSwap (btnName) {
+function muteVol () {
+    if (isMute == false) {
+        audio.muted = true;
+        isMute = true;
+        document.getElementById('mute-btn').innerHTML = "<i class='fas fa-volume-mute'></i>";
 
-    // Check if Prev or next is pressed 
+    } else if (isMute == true) {
+        audio.muted = false;
+        isMute = false;
+        document.getElementById('mute-btn').innerHTML = "<i class='fas fa-volume-down'></i>";
+    }
+}
+
+function audSwap (btnName) {
+
+
+
+    // Check if Prev or Next is pressed 
     if (btnName == 1) {
-        vidSelect -= 1;
+        songInd -= 1;
     } else if (btnName == 2) {
-        vidSelect += 1;
+        songInd += 1;
     }     
 
-    // Ensure videoSelect is between 1-3
-    if (vidSelect > 3) {
-        vidSelect = 1;
-    } else if (vidSelect < 1) {
-        vidSelect = 3;
+    // Ensure songInd is between 0-songMax
+    if (songInd > songMax) {
+        songInd = 0;
+    } else if (songInd < 0) {
+        songInd = songMax;
     }
 
-    // Assign audio to number
-    if (vidSelect == 1) {
-        audio.src = 'movie.mp4';
-    } else if (vidSelect == 2) {
-        audio.src = 'movie2.mp4';
-    } else if (vidSelect == 3) {
-        audio.src = 'movie3.mp4';
-    }
+    // Change audio file 
+    audio.src = songsList[songInd].src;
+
+    // Change container BG image
+    console.log(songsList[songInd].image);
+    document.body.style.backgroundImage = songsList[songInd].image;
+
+    // Change song title
+    document.getElementById('song-title').innerHTML = songsList[songInd].title;
+
+    // Change artist name
+    document.getElementById('artist').innerHTML = songsList[songInd].artist;
+
+    
 }
 
