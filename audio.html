@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Audio JS</title>
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+
+            #container {
+                width: 900px;
+                height: 600px;
+                border: 1px solid black;
+                margin: 0 auto;
+            }
+
+            .btn {
+                width: 80px;
+                height: 80px;
+                background-color: lightgreen;
+                border-radius: 50%;
+                display: inline-block;
+                line-height: 80px;
+                text-align: center;
+            }
+
+            #seekBar {
+                width: 500px;
+                height: 80px;
+                border: 1px solid black;
+            }
+
+            #timeBar {
+                width: 0px;
+                height: inherit;
+                background-color: lightgreen;
+
+                transition: all 1.4s ease-out;
+            }
+
+            
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1 id="titleText"></h1>
+            <h4 id="artistText"></h4>
+            <audio id="sng" src="audio/littlebit.mp3" controls></audio>
+
+            <div class="btn" onclick="playSng()">Play</div>
+            <div class="btn" onclick="pauseSng()">Pause</div>
+
+            <div id="seekBar">
+                <div id="timeBar"></div>
+            </div>
+
+            <div class="btn" onclick="getSong('songlist')">Song 1</div>
+            <div class="btn" onclick="getSong('songlist2')">Song 2</div>
+        </div>
+
+        <script src="scriptaud.js"></script>
+    </body>
+</html>

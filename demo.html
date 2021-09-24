@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS timer</title>
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+
+            #container {
+                width: 900px;
+                height: 600px;
+                margin: 0 auto;
+                border: 1px solid black;
+                position: relative;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            #box1 {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: blue;
+            }
+
+            #box2 {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: red;
+            }
+
+            #box3 {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: green;
+            }
+
+
+
+
+        </style>
+        <script>
+            // setInterval(moveBox, 1000);
+            // function moveBox() {
+            //     console.log("hi!");
+            // }
+
+            // setInterval(function(){
+            //     console.log("running without function name");
+            // },1000);
+
+            // var timer = setInterval(function() {}, 1000);
+
+            setTimeout(countDown, 5000);
+            function countDown () {
+                console.log ("Run Forrest, Run!");
+                clearInterval(boxInterval);
+
+            }
+
+            setTimeout(countDown2, 10000);
+            function countDown2() {
+                setInterval(increaseScore,10);
+            }
+
+            var boxInterval = setInterval (increaseScore, 10);
+            var i = 0;
+            var box1X = 0;
+            var box2Y = 0;
+            var box3X = 0;
+            var box3Y = 0;
+
+
+            function increaseScore () {
+                document.querySelector('h1').innerHTML = i;
+                i +=1 ;
+                box1X += 5;
+                box2Y += 5;
+                box3X += 5;
+                box3Y += 5;
+
+                if (box1X >= 900 ) {
+                    box1X = -100;
+                }
+
+                if (box2Y >= 600) {
+                    box2Y = 0;
+                }
+
+                if (box3X >= 900 || box3Y >= 600) {
+                    box3X = 0;
+                    box3Y = 0;
+                }
+
+
+                document.getElementById("box1").style.left = box1X + 'px';
+                document.getElementById("box2").style.top = box2Y + 'px';
+                document.getElementById("box3").style.left = box3X + 'px';
+                document.getElementById("box3").style.top = box3Y + 'px';
+            }
+
+            
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="box1"></div>
+            <div id="box2"></div>
+            <div id="box3"></div>
+
+            
+            <h1>0</h1>
+        </div>
+
+    </body>
+</html>
